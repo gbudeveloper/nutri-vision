@@ -1,0 +1,186 @@
+import type { NutritionAnalysis } from "@/lib/types"
+
+// Sample demo data for different food types
+const demoAnalyses: NutritionAnalysis[] = [
+  {
+    foods: [
+      {
+        name: "Grilled Chicken Breast",
+        portion: "150g",
+        confidence: 95,
+        calories: 248,
+        protein: 46.5,
+        carbs: 0,
+        fat: 5.4,
+        fiber: 0,
+        sugar: 0,
+        sodium: 82,
+      },
+      {
+        name: "Steamed Broccoli",
+        portion: "1 cup (156g)",
+        confidence: 92,
+        calories: 55,
+        protein: 3.7,
+        carbs: 11.2,
+        fat: 0.6,
+        fiber: 5.1,
+        sugar: 2.2,
+        sodium: 64,
+      },
+      {
+        name: "Brown Rice",
+        portion: "1/2 cup cooked",
+        confidence: 88,
+        calories: 109,
+        protein: 2.3,
+        carbs: 22.9,
+        fat: 0.8,
+        fiber: 1.8,
+        sugar: 0.4,
+        sodium: 5,
+      },
+    ],
+    totalNutrition: {
+      calories: 412,
+      protein: 52.5,
+      carbs: 34.1,
+      fat: 6.8,
+      fiber: 6.9,
+      sugar: 2.6,
+      sodium: 151,
+    },
+    healthInsights: [
+      "Excellent protein-rich meal supporting muscle recovery and satiety",
+      "Great fiber content from broccoli aids digestive health",
+      "Well-balanced macronutrient distribution for sustained energy",
+      "Low sodium content helps maintain healthy blood pressure",
+      "Consider adding healthy fats like olive oil or avocado for better nutrient absorption",
+    ],
+    mealType: "lunch",
+  },
+  {
+    foods: [
+      {
+        name: "Avocado Toast",
+        portion: "2 slices whole grain bread with 1/2 avocado",
+        confidence: 94,
+        calories: 340,
+        protein: 8.5,
+        carbs: 38,
+        fat: 18.2,
+        fiber: 9.5,
+        sugar: 2.1,
+        sodium: 290,
+      },
+      {
+        name: "Poached Eggs",
+        portion: "2 large eggs",
+        confidence: 96,
+        calories: 144,
+        protein: 12.6,
+        carbs: 0.8,
+        fat: 9.5,
+        fiber: 0,
+        sugar: 0.4,
+        sodium: 294,
+      },
+      {
+        name: "Cherry Tomatoes",
+        portion: "6 tomatoes (102g)",
+        confidence: 91,
+        calories: 18,
+        protein: 0.9,
+        carbs: 3.9,
+        fat: 0.2,
+        fiber: 1.2,
+        sugar: 2.6,
+        sodium: 5,
+      },
+    ],
+    totalNutrition: {
+      calories: 502,
+      protein: 22,
+      carbs: 42.7,
+      fat: 27.9,
+      fiber: 10.7,
+      sugar: 5.1,
+      sodium: 589,
+    },
+    healthInsights: [
+      "Heart-healthy monounsaturated fats from avocado support cardiovascular health",
+      "High-quality protein from eggs promotes muscle maintenance",
+      "Excellent source of fiber for digestive wellness",
+      "Rich in vitamins E, K, and B-complex from whole grains and avocado",
+      "Lycopene from tomatoes provides powerful antioxidant benefits",
+    ],
+    mealType: "breakfast",
+  },
+  {
+    foods: [
+      {
+        name: "Caesar Salad",
+        portion: "2 cups romaine lettuce",
+        confidence: 93,
+        calories: 94,
+        protein: 3.8,
+        carbs: 6.2,
+        fat: 6.8,
+        fiber: 2.4,
+        sugar: 1.8,
+        sodium: 280,
+      },
+      {
+        name: "Grilled Salmon",
+        portion: "170g fillet",
+        confidence: 97,
+        calories: 367,
+        protein: 39.2,
+        carbs: 0,
+        fat: 22.1,
+        fiber: 0,
+        sugar: 0,
+        sodium: 98,
+      },
+      {
+        name: "Parmesan Cheese",
+        portion: "2 tbsp shaved",
+        confidence: 85,
+        calories: 43,
+        protein: 3.9,
+        carbs: 0.2,
+        fat: 2.9,
+        fiber: 0,
+        sugar: 0.1,
+        sodium: 152,
+      },
+    ],
+    totalNutrition: {
+      calories: 504,
+      protein: 46.9,
+      carbs: 6.4,
+      fat: 31.8,
+      fiber: 2.4,
+      sugar: 1.9,
+      sodium: 530,
+    },
+    healthInsights: [
+      "Omega-3 fatty acids from salmon support brain health and reduce inflammation",
+      "High protein content promotes muscle synthesis and long-lasting fullness",
+      "Low-carb meal suitable for those monitoring carbohydrate intake",
+      "Calcium from parmesan supports bone health",
+      "Consider reducing dressing amount to lower sodium content",
+    ],
+    mealType: "dinner",
+  },
+]
+
+export async function POST() {
+  // Simulate a slight delay to show loading state
+  await new Promise((resolve) => setTimeout(resolve, 1500))
+
+  // Return a random demo analysis
+  const randomIndex = Math.floor(Math.random() * demoAnalyses.length)
+
+  return Response.json({ analysis: demoAnalyses[randomIndex] })
+}
